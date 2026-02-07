@@ -24,7 +24,7 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v2
 
       - name: Build Docker image
-        run: docker buildx build --platform linux/amd64 -t ${{ secrets.ECR_REPOSITORY }}:latest -f docker/Dockerfile --load.
+        run: docker buildx build --platform linux/amd64 -t ${{ secrets.ECR_REPOSITORY }}:latest -f docker/Dockerfile --load .
 
       - name: Tag Docker image
         run: docker tag ${{ secrets.ECR_REPOSITORY }}:latest ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY }}:latest
